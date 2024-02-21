@@ -28,10 +28,20 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
 
+    // category collection
     const categoryCollection = client.db("nestDb").collection("allCategory")
 
     app.get('/all-category', async (req, res) => {
         const result = await categoryCollection.find().toArray();
+        res.send(result);
+    })
+
+
+    // best deals collection
+    const dealsCollection = client.db("nestDb").collection("bestDeals")
+
+    app.get('/best-deals', async (req, res) => {
+        const result = await dealsCollection.find().toArray();
         res.send(result);
     })
 
