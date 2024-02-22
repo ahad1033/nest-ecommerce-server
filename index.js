@@ -45,6 +45,14 @@ async function run() {
         res.send(result);
     })
 
+    // best deals collection
+    const advertiseCollection = client.db("nestDb").collection("advertise")
+
+    app.get('/advertise', async (req, res) => {
+        const result = await advertiseCollection.find().toArray();
+        res.send(result);
+    })
+
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
